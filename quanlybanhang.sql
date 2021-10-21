@@ -1,4 +1,4 @@
-CREATE SCHEMA `quanlybanhang` ;
+-- CREATE SCHEMA `quanlybanhang` ;
 
 USE `quanlybanhang` ;
 
@@ -29,4 +29,5 @@ odQTY INT NOT NULL,
 FOREIGN KEY(pID) REFERENCES Product(pID),
 FOREIGN KEY(oID) REFERENCES Orderr (oID)
 );
+
 
