@@ -1,4 +1,4 @@
--- CREATE SCHEMA `quanlybanhang` ;
+CREATE SCHEMA `quanlybanhang` ;
 
 USE `quanlybanhang` ;
 
@@ -23,10 +23,10 @@ pPrice DOUBLE NOT NULL
 );
 
 CREATE TABLE OrderDetail(
-oID INT NOT NULL  PRIMARY KEY,
-pID INT NOT NULL  PRIMARY KEY,
+oID INT NOT NULL ,
+pID INT NOT NULL ,
 odQTY INT NOT NULL,
- FOREIGN KEY(pID) REFERENCES Product(pID),
+FOREIGN KEY(pID) REFERENCES Product(pID),
 FOREIGN KEY(oID) REFERENCES Orderr (oID)
 );
 
