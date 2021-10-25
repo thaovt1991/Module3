@@ -5,7 +5,7 @@ EXPLAIN SELECT * FROM Products WHERE productCode = 'IP6';
 
 
 EXPLAIN SELECT * FROM Products WHERE productName = 'Iphone 6' AND productPrice = 5000000 ; 
-CREATE INDEX compositeIndex_product
+CREATE UNIQUE INDEX compositeIndex_product
 ON Products (productName, productPrice);
 EXPLAIN SELECT * FROM Products WHERE productName = 'Iphone 6' AND productPrice = 5000000 ; 
 
