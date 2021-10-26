@@ -1,0 +1,80 @@
+body{
+    background-color:rgb(239, 243, 247);
+}
+
+div{
+    float: left;
+    position:relative;
+    margin-top: 135px;
+}
+#div-left{
+    width: 40%;
+    margin-left: 165px;
+    margin-right: 25px;
+   
+}
+#div-right{
+    width: 31%; 
+    margin-right: 18px;
+    margin-left: 20px;
+    text-align: center; 
+}
+h1{
+    color:  rgb(51, 101, 238);
+    font-size: 60px ;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding-top: 20px;
+    margin-bottom: 0px ;
+    padding-bottom: 0px;
+}
+#div-left p {
+    font-size: 30px ;
+    margin-top: 0px ;
+    padding-top: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+fieldset{
+    background-color:white;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 30px;
+    border: 1px solid rgb(232, 241, 243);
+    box-shadow: 2px 1px 2px 2px rgb(169, 180, 182);
+}
+input[type = "text"]{
+    border-radius: 10px;
+    width: 95%;
+    border: 1px solid rgb(169, 180, 182);
+    height: 45px;
+    margin-top: 15px;
+    font-size: 20px;
+}
+#bt_login{
+    border-radius: 10px;
+    width: 100%;
+    color: white;
+    background-color: rgb(51, 101, 238);
+    height: 45px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+#bt_create_account{
+    border-radius: 10px;
+    width: 50%;
+    color: white;
+    background-color:#63a106;
+    height: 45px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+a{
+    font-size: 20px;
+    text-decoration: none;
+}
+#div-right p {
+    font-size: 18px;
+}
