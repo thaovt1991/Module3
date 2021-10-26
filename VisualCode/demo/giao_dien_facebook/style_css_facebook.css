@@ -20,7 +20,7 @@ div{
     text-align: center; 
 }
 h1{
-    color:  rgb(51, 101, 238);
+    color: rgb(68, 113, 238);
     font-size: 60px ;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -51,10 +51,10 @@ input[type = "text"]{
     font-size: 20px;
 }
 #bt_login{
-    border-radius: 10px;
+    border-radius: 10px ;
     width: 100%;
     color: white;
-    background-color: rgb(51, 101, 238);
+    background-color: rgb(68, 113, 238);
     height: 45px;
     font-size: 20px;
     font-weight: bold;
@@ -72,9 +72,20 @@ input[type = "text"]{
 }
 
 a{
-    font-size: 20px;
+    font-size: 18px;
     text-decoration: none;
 }
 #div-right p {
     font-size: 18px;
 }
+#bt_login:hover{
+    background-color: rgb(36, 90, 240);
+}
+#bt_create_account:hover{
+    background-color:#538606;
+}
+
+a:hover{
+    text-decoration-line:underline;
+}
+
