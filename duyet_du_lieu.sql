@@ -1,33 +1,32 @@
 USE quanlybanhang ;
 
-SELECT oID,oDate,oTotalPrice FROM orderr ;
+SELECT oID,oDate,oTotalPrice FROM Orderr ;
 
-SELECT customer.cID, customer.cNAme,customer.cAge, orderr.oID, orderr.oDate, orderr.oTotalPrice 
-FROM customer
-INNER JOIN orderr ON customer.cID = orderr.cID 
-GROUP BY (customer.cID) ; 
+SELECT Customer.cID, Customer.cNAme,Customer.cAge, Orderr.oID, Orderr.oDate, Orderr.oTotalPrice 
+FROM Customer
+INNER JOIN Orderr ON Customer.cID = Orderr.cID ;
 
-SELECT  product.pName 
-FROM product
-INNER JOIN orderdetail ON product.pID = orderdetail.pID
-GROUP BY  product.pName ;
+SELECT  Product.pName 
+FROM Product
+INNER JOIN OrderDetail ON Product.pID = OrderDetail.pID
+GROUP BY  Product.pName ;
 
-SELECT customer.cID, customer.cNAme,customer.cAge
-FROM customer WHERE customer.cID NOT IN (SELECT orderr.cID FROM orderr);
-
+SELECT Customer.cID, Customer.cNAme,Customer.cAge
+FROM Customer WHERE Customer.cID NOT IN (SELECT Orderr.cID FROM Orderr);
 
 
-
-
-(SELECT displayBill.oID, displayBill.oDate,SUM(displayBill.Total) 
+SELECT displayBill.oID, displayBill.oDate,SUM(displayBill.Total) 
 FROM
-(SELECT orderr.oID, orderr.oDate, tableTotalMoney.totalMoney AS Total
-FROM orderr
-INNER JOIN (SELECT oID,(orderdetail.odQTY*product.pPrice) AS totalMoney
-FROM orderdetail 
-INNER JOIN product on product.pID=orderdetail.pID) AS tableTotalMoney
-ON orderr.oID = tableTotalMoney.oID) AS displayBill
-GROUP BY displayBill.oID, displayBill.oDate)
+(SELECT Orderr.oID, Orderr.oDate, tableTotalMoney.totalMoney AS Total
+FROM Orderr
+INNER JOIN (
+          SELECT oID,(OrderDetail.odQTY*Product.pPrice) AS totalMoney
+          FROM OrderDetail 
+          INNER JOIN Product 
+          ON Product.pID=OrderDetail.pID) AS tableTotalMoney
+ON Orderr.oID = tableTotalMoney.oID) AS displayBill
+GROUP BY displayBill.oID, displayBill.oDate
+ORDER BY displayBill.oID;
 
 
 
