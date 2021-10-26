@@ -88,6 +88,14 @@ a{
 a:hover{
     text-decoration-line:underline;
 }
+#footer{
+    clear: both;
+    color: rgb(99, 168, 236);
+    margin-left: 165px;
+    margin-right: 160px;
+    font-size: 15px;
+    
+}
 * {
     box-sizing:border-box;
 }

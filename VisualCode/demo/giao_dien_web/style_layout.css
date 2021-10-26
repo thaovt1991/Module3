@@ -1,0 +1,85 @@
+body {
+    margin: 0px;
+}
+
+#header {
+    background-color: rgb(63, 60, 60);
+    width: 100%;
+    height: 50px;
+}
+
+#sidebar_left {
+    background-color: rgb(170, 170, 164);
+    width: 15%;
+    height: 400px;
+    float: left;
+    text-align: center;
+}
+
+#main {
+    background-color: white;
+    width: 70%;
+    height: 400px;
+    float: left;
+}
+
+#main h1,h2, p {
+    padding: 10px;
+}
+
+#sidebar_right {
+    background-color: rgb(170, 170, 164);
+    width: 15%;
+    height: 400px;
+    float: left;
+    text-align: center;
+}
+
+#footer {
+    background-color: rgb(56, 54, 54);
+    width: 100%;
+    height: 70px;
+    clear: both;
+    text-align: center;
+}
+
+#header li {
+    float: left;
+    text-align: center;
+    width: 70px;
+    text-decoration: none;
+    position: relative;
+    margin: 0px;
+    padding: 15px 5px 15px 5px;
+}
+
+/* #login{
+    float: right;
+} */
+
+#header a {
+    color: white;
+    text-decoration: none;
+}
+
+#header li:hover {
+    background-color: black;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+#sidebar_left li {
+    margin: 15px;
+}
+button{
+    width: 80px;
+    height: 40px;
+    margin: 20px;
+    border-radius: 5px;
+}
