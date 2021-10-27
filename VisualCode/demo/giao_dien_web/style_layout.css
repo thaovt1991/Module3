@@ -11,7 +11,7 @@ body {
 #sidebar_left {
     background-color: rgb(170, 170, 164);
     width: 15%;
-    height: 400px;
+    height: 500px;
     float: left;
     text-align: center;
 }
@@ -19,7 +19,7 @@ body {
 #main {
     background-color: white;
     width: 70%;
-    height: 400px;
+    height: 500px;
     float: left;
 }
 
@@ -30,7 +30,7 @@ body {
 #sidebar_right {
     background-color: rgb(170, 170, 164);
     width: 15%;
-    height: 400px;
+    height: 500px;
     float: left;
     text-align: center;
 }

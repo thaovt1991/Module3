@@ -16,7 +16,7 @@ IN
 productCodeNewP VARCHAR(20),
 productNameNewP VARCHAR(20),
 productPriceNewP INT ,
- productAmountNewP INT ,
+productAmountNewP INT ,
 productDescriptionNewP VARCHAR(255),
 productStatusNewP VARCHAR(20) 
 )
