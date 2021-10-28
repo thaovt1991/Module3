@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+}
+
+li {
+    list-style-type : none;
+}
+
+
+#menu-left {
+    float: left;
+}
+#menu-right {
+    float: right;
+}
+#menu-left li{
+    float: left; 
+    margin-left: 20px;
+}
+
+#menu-right li{
+    float: right;
+
+}
+.menu-icon i{
+    width: 50px !important;
+    height: 50px !important;
+}
