@@ -4,6 +4,12 @@
 
 li {
     list-style-type : none;
+    height: 100px;
+    
+}
+li:hover{
+    cursor: pointer;
+    text-decoration-line:underline;
 }
 
 
