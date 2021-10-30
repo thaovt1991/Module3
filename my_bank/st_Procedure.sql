@@ -86,7 +86,7 @@ SELECT* FROM Transfers ;
 -- Hien thi lich su giao dich--
 SELECT 
       ts.id ,
-	  ts.idSender,
+	  ts.idSender ,
       sd.nameCustomer,
       ts.idRecipient,
       rp.nameCustomer,
