@@ -83,3 +83,20 @@ button{
     margin: 20px;
     border-radius: 5px;
 }
+@media only screen and (max-width : 800px)and (min-width : 600px){
+    #header{
+        color: chartreuse;
+    }
+    #sidebar_left {
+        width: 100%;
+    }
+    #main{
+        width: 100%;
+    }
+    #sidebar_right{
+        width: 100%;
+    }
+    #footer{
+        width: 100%;
+    }
+}

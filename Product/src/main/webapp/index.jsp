@@ -14,11 +14,12 @@
 <form action="/display-discount" method="post">
   <h1> Product Discount Calculator</h1>
   <br>
-  <lable>Product Description</lable>
+  <lable>Product Description</lable>  <br>
   <input type="text" name ="productDescription" placeholder="Mo ta san pham">    <br>
   <lable>List Price</lable>
+  <br>
   <input type="number" name ="listPrice" placeholder="Gia niem yet">   <br>
-  <lable>Discount Percent</lable>
+  <lable>Discount Percent</lable>  <br>
   <input type="number" name = "discountPercent" placeholder="Ti le chiet khau">   <br>
   <input type="submit" value = " Calculate Discount">
 </form>

@@ -15,7 +15,7 @@ div{
     width: 100%;
     height: 100%;
 }
-#header button {
+/* button {
    border-spacing : 0px;
    text-align: center;
    font-size: 18px;
@@ -25,12 +25,12 @@ div{
    background: rgb(53, 93, 224);
    color: white;
    padding: 0px
-}
-#header button :hover {
+} */
+/* #header button :hover {
     color : black;
-    background: red;
+    background:white;
 
-}
+} */
 
 #main {
     width: 98%;
