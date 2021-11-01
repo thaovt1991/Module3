@@ -21,6 +21,10 @@
         text-align: left;
         border-bottom: 1px solid #ddd;
     }
+    td img {
+        width: 50px;
+        height: 50px
+    }
 </style>
 <body>
 <h1>Danh sách khách hàng</h1>
@@ -41,7 +45,6 @@
             <td>${cus.name}</td>
             <td>${cus.dateOfBirth}</td>
             <td>${cus.add}</td>
-<%--            <td><img src="${cus.getImage}" alt=""></td>--%>
            <td><img src="${cus.image}" alt=""></td>
         </tr>
         </tbody>

@@ -33,7 +33,7 @@ public class ListCustomerServlet extends HttpServlet {
         customers.add(new Customers("Trần Đăng Khoa", "1983-08-16", "Hà Tây", "/image/img4.jpeg"));
         customers.add(new Customers("Nguyễn Đình Thi", "1983-08-18", "Hà Nội", "/image/img5.jpg"));
 
-          request.setAttribute("list", customers);
+        request.setAttribute("list", customers);
 
         RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
         rd.forward(request, response);
