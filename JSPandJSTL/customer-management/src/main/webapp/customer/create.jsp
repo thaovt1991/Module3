@@ -18,11 +18,7 @@
 </head>
 <body>
 <h1>Create new customer</h1>
-<p>
-    <c:if test='${requestScope["message"] != null}'>
-        <span class="message">${requestScope["message"]}</span>
-    </c:if>
-</p>
+
 <p>
     <a href="/customers">Back to customer list</a>
 </p>
@@ -39,6 +35,10 @@
                 <td><input type="text" name="email" id="email"></td>
             </tr>
             <tr>
+                <td>Phone: </td>
+                <td><input type="text" name="phone" id="phone"></td>
+            </tr>
+            <tr>
                 <td>Address: </td>
                 <td><input type="text" name="address" id="address"></td>
             </tr>
@@ -49,5 +49,10 @@
         </table>
     </fieldset>
 </form>
+<p>
+    <c:if test='${requestScope["message"] != null}'>
+        <span class="message">${requestScope["message"]}</span>
+    </c:if>
+</p>
 </body>
 </html>

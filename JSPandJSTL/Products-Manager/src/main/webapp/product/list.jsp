@@ -16,6 +16,15 @@
 <p>
     <a href="/products?action=create">Create new product</a>
 </p>
+
+<form method="post" action ="/products?action=search" >
+    <table>
+        <tr>
+            <td><input type="text" name="name" id="name" placeholder="Product name search" ></td>
+            <td><button type="submit" >Search</button></td>
+        </tr>
+    </table>
+</form>
 <table border="1">
     <tr>
         <td>Product Name</td>
@@ -35,6 +44,8 @@
             <td><a href="/products?action=delete&id=${product.getId()}">delete</a></td>
         </tr>
     </c:forEach>
+
+
 </table>
 </body>
 </html>

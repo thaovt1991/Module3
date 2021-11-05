@@ -24,8 +24,8 @@
         <tr>
             <td style="width: 60%;"> <h1 style="color: white">List of customers</h1></td>
             <td  style="width: 40%;">
-                <button type="button" class="btn btn-outline-light" >
-                    <i class="fa fa-history" disabled></i>
+                <button type="button" class="btn btn-outline-light" onclick="window.location.href='/customers?action=transfers_list'">
+                    <i class="fa fa-history" ></i>
                     <span> Transfer money information</span>
                 </button>
                 <button type="button" class="btn btn-outline-light" onclick="window.location.href='/customers?action=create'">
@@ -63,17 +63,17 @@
                 </button>
             </td>
             <td>
-                <button type="button" class="btn btn-outline-success"  data-toggle="tooltip" data-placement="top" title="Desposit">
+                <button type="button" class="btn btn-outline-success"  data-toggle="tooltip" data-placement="top" title="Desposit" onclick="window.location.href ='/customers?action=deposit&id=${customer.getId()}'">
                     <i class="far fa-plus-square"></i>
                 </button>
             </td>
             <td>
-                <button type="button" class="btn btn-outline-warning"data-toggle="tooltip" data-placement="top" title="Withdraw">
+                <button type="button" class="btn btn-outline-warning"data-toggle="tooltip" data-placement="top" title="Withdraw" onclick="window.location.href ='/customers?action=withdraw&id=${customer.getId()}'">
                     <i class="fas fa-minus"></i>
                 </button>
             </td>
             <td>
-                <button type="button" class="btn btn-outline-primary"data-toggle="tooltip" data-placement="top" title="Transfer">
+                <button type="button" class="btn btn-outline-primary"data-toggle="tooltip" data-placement="top" title="Transfer" onclick="window.location.href ='/customers?action=transfer&id=${customer.getId()}'">
                     <i class="fas fa-exchange-alt"></i>
                 </button></td>
             <td>

@@ -21,7 +21,7 @@ public class CustomerServlet extends HttpServlet {
     private CustomerService customerService = new CustomerServiceImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        loginAccount(request, response) ;
+        loginAccount(request, response);
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
@@ -45,10 +45,13 @@ public class CustomerServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-        if(action == null){
+        if (action == null) {
             action = "";
         }
-        switch (action){
+        switch (action) {
+            case "list":
+                listCustomers(request, response);
+                break;
             case "create":
                 showCreateForm(request, response);
                 break;
@@ -56,24 +59,19 @@ public class CustomerServlet extends HttpServlet {
                 showEditForm(request, response);
                 break;
             case "delete":
-                showDeleteForm(request, response) ;
+                showDeleteForm(request, response);
                 break;
             case "view":
                 viewCustomer(request, response);
                 break;
             default:
-                listCustomers(request, response);
+                showIndex(request, response);
                 break;
         }
     }
 
-private void loginAccount(HttpServletRequest request, HttpServletResponse response) {
-    String username = request.getParameter("username");
-    String password = request.getParameter("password");
-    if ("admin".equals(username) && "Admin@123".equals(password)) {
-        listCustomers(request, response);
-    }else {
-       RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+    private void showIndex(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/index.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -82,7 +80,23 @@ private void loginAccount(HttpServletRequest request, HttpServletResponse respon
             e.printStackTrace();
         }
     }
-}
+
+    private void loginAccount(HttpServletRequest request, HttpServletResponse response) {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        if ("admin".equals(username) && "Admin@123".equals(password)) {
+            listCustomers(request, response);
+        } else {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            try {
+                dispatcher.forward(request, response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     private void listCustomers(HttpServletRequest request, HttpServletResponse response) {
         List<Customer> customers = this.customerService.findAll();
@@ -113,7 +127,7 @@ private void loginAccount(HttpServletRequest request, HttpServletResponse respon
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
-        int id = (int)(Math.random() * 10000);
+        int id = (int) (Math.random() * 10000);
 
         Customer customer = new Customer(id, name, email, address);
         this.customerService.save(customer);
@@ -132,7 +146,7 @@ private void loginAccount(HttpServletRequest request, HttpServletResponse respon
         int id = Integer.parseInt(request.getParameter("id"));
         Customer customer = this.customerService.findById(id);
         RequestDispatcher dispatcher;
-        if(customer == null){
+        if (customer == null) {
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
             request.setAttribute("customer", customer);
@@ -154,7 +168,7 @@ private void loginAccount(HttpServletRequest request, HttpServletResponse respon
         String address = request.getParameter("address");
         Customer customer = this.customerService.findById(id);
         RequestDispatcher dispatcher;
-        if(customer == null){
+        if (customer == null) {
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
             customer.setName(name);
@@ -178,7 +192,7 @@ private void loginAccount(HttpServletRequest request, HttpServletResponse respon
         int id = Integer.parseInt(request.getParameter("id"));
         Customer customer = this.customerService.findById(id);
         RequestDispatcher dispatcher;
-        if(customer == null){
+        if (customer == null) {
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
             request.setAttribute("customer", customer);
@@ -192,11 +206,12 @@ private void loginAccount(HttpServletRequest request, HttpServletResponse respon
             e.printStackTrace();
         }
     }
+
     private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         Customer customer = this.customerService.findById(id);
         RequestDispatcher dispatcher;
-        if(customer == null){
+        if (customer == null) {
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
             this.customerService.remove(id);
@@ -212,7 +227,7 @@ private void loginAccount(HttpServletRequest request, HttpServletResponse respon
         int id = Integer.parseInt(request.getParameter("id"));
         Customer customer = this.customerService.findById(id);
         RequestDispatcher dispatcher;
-        if(customer == null){
+        if (customer == null) {
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
             request.setAttribute("customer", customer);

@@ -13,9 +13,9 @@ public class TransferServiceImpl implements  TransferService{
 
     static {
         transfers = new HashMap<>() ;
-        transfers.put(1,new Transfer(1,3,1,1000000,10));
-        transfers.put(1,new Transfer(2,1,2,1000000,10));
-        transfers.put(1,new Transfer(3,1,4,1000000,10));
+        transfers.put(1,new Transfer(1,3,"Alex",1,"John",1000000,10));
+        transfers.put(2,new Transfer(2,1,"John",2,"Bill",2000000,10));
+        transfers.put(3,new Transfer(3,1,"John",4,"Adam",3000000,10));
     }
 
     @Override

@@ -5,6 +5,8 @@
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/customer/create.jsp" value="file://$PROJECT_DIR$/src/main/webapp/customer" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/customer/list.jsp" value="file://$PROJECT_DIR$/src/main/webapp/customer" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/customer/transfer.jsp" value="file://$PROJECT_DIR$/src/main/webapp/customer" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/customer/transfers_list.jsp" value="file://$PROJECT_DIR$/src/main/webapp/customer" />
       </map>
     </option>
   </component>

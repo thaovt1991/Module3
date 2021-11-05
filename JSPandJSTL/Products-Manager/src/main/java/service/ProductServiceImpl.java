@@ -2,10 +2,7 @@ package service;
 
 import model.Product;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ProductServiceImpl implements ProductService {
 
@@ -32,6 +29,19 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product findById(int id) {
         return products.get(id) ;
+    }
+
+    @Override
+    public List<Product> findByName(String name) {
+        List<Product> listProducts = new ArrayList<>(products.values());
+        List<Product> listSearchName = new ArrayList<>() ;
+        name = name.toLowerCase();
+       for(Product p : listProducts){
+            if(p.getName().toLowerCase().contains(name)){
+                listSearchName.add(p);
+            }
+        }
+       return listSearchName ;
     }
 
     @Override

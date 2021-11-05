@@ -6,82 +6,89 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <title>Customer List</title>
-  <link rel="stylesheet" href="/assets/fontawesome-free-6.0.0-beta2-web/css/all.css">
-  <link rel="stylesheet" href="/assets/css/list_customers.css">
-  <link rel="stylesheet" href="/assets/css/bootstrap-5.1.3-dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/assets/bootstrap-footer-15/bootstrap-footer-15/css/style.css">
+    <title>Transfers money information</title>
+    <link rel="stylesheet" href="/assets/fontawesome-free-6.0.0-beta2-web/css/all.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap-5.1.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap-footer-15/bootstrap-footer-15/css/style.css">
 
+    <style>
+        #header {
+            width: 100%;
+            height: 100px;
+            background: rgb(53, 93, 224);
+            color: white;
+        }
+        #main {
+            width: 100%;
+            height: auto;
+        }
+
+        #main table {
+            width: 100%;
+            height: auto;
+            border-spacing: 0px;
+        }
+
+        #main table tr th  {
+            text-align: center;
+            background: green;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+        td{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-
-<div id = "header" >
-  <table>
-    <tr>
-      <td style="width: 60%;"> <h1 style="color: white">Transfer money Information</h1></td>
-      <td  style="width: 40%;">
-        <button type="button" class="btn btn-outline-light" >
-          <i class="fa fa-history" disabled></i>
-          <span> Transfer money information</span>
+<div class="row" id="header">
+    <div class="col-md-6">
+        <h1>Transfer money Information</h1>
+    </div>
+    <div class="col-md-6">
+        <button type="button" class="btn btn-outline-light" style="float: right;"
+                onclick="window.location.href='/customers'">
+            <i class="fa fa-list"></i>
+            <span>Customers List</span>
         </button>
-        <button type="button" class="btn btn-outline-light" onclick="window.location.href='/customers?action=create'">
-          <i class="far fa-plus-square" ></i>
-          <span>Add New Customer</span>
-        </button>
-      </td>
-    </tr>
-  </table>
+    </div>
 </div>
-<div id ="main">
-  <table border="1" class="table table-striped table table-hover">
-    <tr id = "head-table">
-      <th class="id">#</th>
-      <th class="full_name">SenderID</th>
-      <th class="email">Sender Name</th>
-      <th class="phone" >Recipient ID</th>
-      <th class="address">Recipient Name</th>
-      <th class="blance">Transfer Amount ($)</th>
-      <th class="action" colspan="5">Action</th>
-    </tr>
-    <c:forEach items='${requestScope["customers"]}' var="customer">
-      <tr>
-        <td class="id">${customer.getId()}</td>
-        <td class="full_name">${customer.getFullName()}</td>
-        <td class="email">${customer.getEmail()}</td>
-        <td class="phone" >${customer.getPhone()}</td>
-        <td class="address">${customer.getAddress()}</td>
-        <td class="blance">
-          <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${customer.getBalance()}"></fmt:formatNumber>
-        </td>
-        <td>
-          <button type="button" class="btn btn-outline-secondary"  data-toggle="tooltip" data-placement="top" title="Edit" onclick="window.location.href ='/customers?action=edit&id=${customer.getId()}'">
-            <i class="far fa-edit"></i>
-          </button>
-        </td>
-        <td>
-          <button type="button" class="btn btn-outline-success"  data-toggle="tooltip" data-placement="top" title="Desposit">
-            <i class="far fa-plus-square"></i>
-          </button>
-        </td>
-        <td>
-          <button type="button" class="btn btn-outline-warning"data-toggle="tooltip" data-placement="top" title="Withdraw">
-            <i class="fas fa-minus"></i>
-          </button>
-        </td>
-        <td>
-          <button type="button" class="btn btn-outline-primary"data-toggle="tooltip" data-placement="top" title="Transfer">
-            <i class="fas fa-exchange-alt"></i>
-          </button></td>
-        <td>
-          <button type="button" class="btn btn-outline-danger"data-toggle="tooltip" data-placement="top" title="Suspended" onclick="window.location.href ='/customers?action=delete&id=${customer.getId()}'">
-            <i class="fas fa-ban"></i>
-          </button>
-        </td>
-
-      </tr>
-    </c:forEach>
-  </table>
+<div id="main">
+    <table border="1" class="table table-striped table table-hover">
+        <tr id="head-table">
+            <th class="id">#</th>
+            <th class="id_sender">SenderID</th>
+            <th class="name_sender">Sender Name</th>
+            <th class="id_recipient">Recipient ID</th>
+            <th class="name_recipient">Recipient Name</th>
+            <th class="t_amount">Transfer Amount (VND)</th>
+            <th class="fees">Fees (%)</th>
+            <th class="fees_amount">Fees Amount (VND)</th>
+        </tr>
+        <c:forEach items='${requestScope["transfers"]}' var="transfer">
+        <tr>
+            <td class="id">${transfer.getIdTransfer()}</td>
+            <td class="id_sender">${transfer.getIdSender()}</td>
+            <td class="name_sender">${transfer.getName_Sender()}</td>
+            <td class="id_recipient">${transfer.getIdRecipient()}</td>
+            <td class="name_recipient">${transfer.getName_Recipient()}</td>
+            <td class="t_amount">
+                <fmt:formatNumber type="number" maxFractionDigits="3"
+                                  value="${transfer.getTransferAmount()}"></fmt:formatNumber>
+            </td>
+            <td class="fees">${transfer.getFees()}</td>
+            <td class="fees_amount">
+                <fmt:formatNumber type="number" maxFractionDigits="3"
+                                  value="${transfer.getTransferAmount()*transfer.getFees()/ 100}"></fmt:formatNumber>
+            </td>
+        </tr>
+        </c:forEach>
+</div>
+</div>
+</body>
+</html>
