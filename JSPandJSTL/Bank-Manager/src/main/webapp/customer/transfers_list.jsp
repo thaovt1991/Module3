@@ -21,6 +21,7 @@
             height: 100px;
             background: rgb(53, 93, 224);
             color: white;
+            margin: 0;
         }
         #main {
             width: 100%;
@@ -51,7 +52,7 @@
         <h1>Transfer money Information</h1>
     </div>
     <div class="col-md-6">
-        <button type="button" class="btn btn-outline-light" style="float: right;"
+        <button type="button" class="btn btn-outline-light" style="float: right;margin-top: 20px;"
                 onclick="window.location.href='/customers'">
             <i class="fa fa-list"></i>
             <span>Customers List</span>

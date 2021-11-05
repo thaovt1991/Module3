@@ -349,7 +349,13 @@ public class CustomerServlet extends HttpServlet {
         request.setAttribute("customer", customerSender);
 
         List<Customer> customersList = customerService.findAll();
-        request.setAttribute("customers", customersList);
+        List<Customer> customersRecipient = new ArrayList<>();
+        for(Customer customer : customersList){
+            if(customer.getId()!= id){
+                customersRecipient.add(customer);
+            }
+        }
+        request.setAttribute("customers", customersRecipient);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("customer/transfer.jsp");
         try {
@@ -381,14 +387,21 @@ public class CustomerServlet extends HttpServlet {
 //        int fees = Integer.parseInt(request.getParameter("fees"));
         int fees = 10;
         List<Customer> customersList = customerService.findAll();
+        List<Customer> customersRecipient = new ArrayList<>();
+        for(Customer customer : customersList){
+            if(customer.getId()!= idSender){
+                customersRecipient.add(customer);
+            }
+        }
+
         if (idRecipient == 0) {
             request.setAttribute("customer", customerSender);
-            request.setAttribute("customers", customersList);
+            request.setAttribute("customers", customersRecipient);
             request.setAttribute("messageError", "** Hay chon nguoi ban muon chuyen tien");
         } else {
             if (balance_Sender <= 50000) {
                 request.setAttribute("customer", customerSender);
-                request.setAttribute("customers", customersList);
+                request.setAttribute("customers", customersRecipient);
                 request.setAttribute("messageError", "** So tien khong du de thuc hien giao dich");
             } else {
                 long amount_transfer = Long.parseLong(request.getParameter("transferAmount"));
@@ -414,7 +427,7 @@ public class CustomerServlet extends HttpServlet {
                         request.setAttribute("messageError", "** So tien gaio dich vuot qua su du tai khoan");
                     }
                     request.setAttribute("customer", customerSender);
-                    request.setAttribute("customers", customersList);
+                    request.setAttribute("customers", customersRecipient);
                 }
             }
         }

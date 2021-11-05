@@ -34,10 +34,10 @@
                 <td>Email: </td>
                 <td><input type="text" name="email" id="email"></td>
             </tr>
-            <tr>
-                <td>Phone: </td>
-                <td><input type="text" name="phone" id="phone"></td>
-            </tr>
+<%--            <tr>--%>
+<%--                <td>Phone: </td>--%>
+<%--                <td><input type="text" name="phone" id="phone"></td>--%>
+<%--            </tr>--%>
             <tr>
                 <td>Address: </td>
                 <td><input type="text" name="address" id="address"></td>

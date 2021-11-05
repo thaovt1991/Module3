@@ -21,7 +21,7 @@ public class CustomerServlet extends HttpServlet {
     private CustomerService customerService = new CustomerServiceImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        loginAccount(request, response);
+//        loginAccount(request, response);
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
@@ -127,10 +127,10 @@ public class CustomerServlet extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
-        int id = (int) (Math.random() * 10000);
+//        int id = (int) (Math.random() * 10000);
 
-        Customer customer = new Customer(id, name, email, address);
-        this.customerService.save(customer);
+        Customer customer = new Customer( name, email, address);
+        this.customerService.saveNew(customer);
         RequestDispatcher dispatcher = request.getRequestDispatcher("customer/create.jsp");
         request.setAttribute("message", "New customer was created");
         try {
