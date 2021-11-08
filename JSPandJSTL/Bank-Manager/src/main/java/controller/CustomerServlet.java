@@ -396,7 +396,7 @@ public class CustomerServlet extends HttpServlet {
 
         if (idRecipient == 0) {
             request.setAttribute("customer", customerSender);
-            request.setAttribute("customers", customersRecipient);
+            request.setAttribute("customersRecipient", customersRecipient);
             request.setAttribute("messageError", "** Hay chon nguoi ban muon chuyen tien");
         } else {
             if (balance_Sender <= 50000) {

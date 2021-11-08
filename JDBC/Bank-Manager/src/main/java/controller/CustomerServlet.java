@@ -391,7 +391,7 @@ public class CustomerServlet extends HttpServlet {
                 customersRecipient.add(customer);
             }
         }
-        request.setAttribute("customers", customersRecipient);
+        request.setAttribute("customersRecipient", customersRecipient);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("customer/transfer.jsp");
         try {
@@ -462,14 +462,15 @@ public class CustomerServlet extends HttpServlet {
                 }
             }
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/transfer.jsp");
-        try {
-            dispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/transfer.jsp");
+//        try {
+//            dispatcher.forward(request, response);
+//        } catch (ServletException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+       showTransfer(request,response);
     }
 
 }

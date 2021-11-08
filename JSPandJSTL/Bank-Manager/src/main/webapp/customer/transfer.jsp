@@ -75,8 +75,7 @@
                 <label class="form-label">Recipient ID</label>
                 <select name="idRecipient" id ="idRecipient" class="form-select" aria-label="Default select example">
                     <option value="0" selected>Select Recipient ID</option>
-                    <c:forEach items='${requestScope["customers"]}' var="cus">
-<%--                        <option value="${cus.getId()}">${cus.getId()}</option>--%>
+                    <c:forEach items='${requestScope["customersRecipient"]}' var="cus">
                         <option value="${cus.getId()}">(${cus.getId()})${cus.getFullName()}</option>
                     </c:forEach>
                 </select>

@@ -1,10 +1,13 @@
 package model;
 
+import java.math.BigDecimal;
+
 public class Customer {
     private int id ;
     private String name ;
     private String email ;
     private String address ;
+    private BigDecimal balance ;
 
     public Customer(){}
 
