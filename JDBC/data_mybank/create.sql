@@ -5,7 +5,7 @@ CREATE TABLE customers (
  id  INT NOT NULL AUTO_INCREMENT,
  full_name VARCHAR(45) NOT NULL,
  email VARCHAR(220) NOT NULL,
- phone VARCHAR(15),
+ phone VARCHAR(45),sp_transfers
  address VARCHAR(255),
  balance LONG ,
  PRIMARY KEY (id)

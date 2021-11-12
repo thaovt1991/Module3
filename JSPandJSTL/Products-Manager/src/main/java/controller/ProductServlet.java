@@ -161,6 +161,7 @@ public class ProductServlet extends HttpServlet {
         if (product == null) {
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
+            if(name != ""){
             product.setName(name);
             product.setPrice(price);
             product.setAmount(amount);
@@ -169,7 +170,11 @@ public class ProductServlet extends HttpServlet {
             request.setAttribute("product", product);
             request.setAttribute("message", "Product information was updated");
             dispatcher = request.getRequestDispatcher("product/edit.jsp");
-        }
+        }else{
+              //  name = product.getName() ;
+                request.setAttribute("message", "Product Fail");
+                dispatcher = request.getRequestDispatcher("product/edit.jsp");
+            }}
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {

@@ -403,81 +403,65 @@ public class CustomerServlet extends HttpServlet {
         }
     }
 //
-//    private void transfer(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-//        int idSender = Integer.parseInt(request.getParameter("id"));
-//        Customer customerSender = customerDAO.findById(idSender);
-//        String name_Serder = customerSender.getFullName();
-//
-//        int idRecipient = 0;
-//        try {
-//            idRecipient = Integer.parseInt(request.getParameter("idRecipient"));
-//        } catch (Exception e) {
-//            idRecipient = 0;
-//        }
-//        Customer customerRecipient = customerDAO.findById(idRecipient);
-//        String name_Recipient = "";
-//        if (customerRecipient != null) {
-//           name_Recipient = customerRecipient.getFullName();
-//        }
-//        long balance_Sender = customerSender.getBalance();
-////        int fees = Integer.parseInt(request.getParameter("fees"));
-//        int fees = 10;
-//        List<Customer> customersList = customerDAO.findAll();
-//        List<Customer> customersRecipient = new ArrayList<>();
-//        for(Customer customer : customersList){
-//            if(customer.getId()!= idSender){
-//                customersRecipient.add(customer);
-//            }
-//        }
-//
-//        if (idRecipient == 0) {
-//            request.setAttribute("customer", customerSender);
-//            request.setAttribute("customers", customersRecipient);
-//            request.setAttribute("messageError", "** Hay chon nguoi ban muon chuyen tien");
-//        } else {
-//            if (balance_Sender <= 50000) {
-//                request.setAttribute("customer", customerSender);
-//                request.setAttribute("customers", customersRecipient);
-//                request.setAttribute("messageError", "** So tien khong du de thuc hien giao dich");
-//            } else {
-//                long amount_transfer = Long.parseLong(request.getParameter("transferAmount"));
-//                long totalTransfer = amount_transfer * (fees + 100) / 100;
-//                if (balance_Sender - 50000 >= totalTransfer && amount_transfer > 0) {
-//                    customerSender.setBalance(balance_Sender - totalTransfer);
-//                    customerDAO.update(customerSender);
-//                    customerRecipient.setBalance(customerRecipient.getBalance() + amount_transfer);
-//                    boolean isCanTransfer = customerDAO.update(customerRecipient);
-//                    request.setAttribute("message", "** Giao dich chuyen khoan thanh cong !");
-//                    Transfer transfer = new Transfer( idSender, name_Serder, idRecipient, name_Recipient, amount_transfer, fees);
-//                    transferDAO.save(transfer);
-//                } else {
-//                    if (amount_transfer <= 0) {
-//                        request.setAttribute("messageError", "** So tien giao dich phai lon hon 0");
-//                    }
-//                    if (totalTransfer > balance_Sender - 50000) {
-//                        request.setAttribute("messageError", "** So tien gaio dich vuot qua su du tai khoan");
-//                    }
-//                    request.setAttribute("customer", customerSender);
-//                    request.setAttribute("customers", customersRecipient);
-//                }
-//            }
-//        }
-////        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/transfer.jsp");
-////        try {
-////            dispatcher.forward(request, response);
-////        } catch (ServletException e) {
-////            e.printStackTrace();
-////        } catch (IOException e) {
-////            e.printStackTrace();
-////        }
-//       showTransfer(request,response);
-//    }
-
     private void transfer(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-         int idSender = Integer.parseInt(request.getParameter("id")) ;
-         int idRecipient = Integer.parseInt(request.getParameter("idRecipient")) ;
-         long amount = Long.parseLong(request.getParameter("transferAmount")) ;
-         customerDAO.transfersTrancition(idSender,idRecipient,amount);
+        int idSender = Integer.parseInt(request.getParameter("id"));
+        Customer customerSender = customerDAO.findById(idSender);
+        String name_Serder = customerSender.getFullName();
+
+        int idRecipient = 0;
+        try {
+            idRecipient = Integer.parseInt(request.getParameter("idRecipient"));
+        } catch (Exception e) {
+            idRecipient = 0;
+        }
+        Customer customerRecipient = customerDAO.findById(idRecipient);
+        String name_Recipient = "";
+        if (customerRecipient != null) {
+           name_Recipient = customerRecipient.getFullName();
+        }
+        long balance_Sender = customerSender.getBalance();
+//        int fees = Integer.parseInt(request.getParameter("fees"));
+        int fees = 10;
+        List<Customer> customersList = customerDAO.findAll();
+        List<Customer> customersRecipient = new ArrayList<>();
+        for(Customer customer : customersList){
+            if(customer.getId()!= idSender){
+                customersRecipient.add(customer);
+            }
+        }
+
+        if (idRecipient == 0) {
+            request.setAttribute("customer", customerSender);
+            request.setAttribute("customers", customersRecipient);
+            request.setAttribute("messageError", "** Hay chon nguoi ban muon chuyen tien");
+        } else {
+            if (balance_Sender <= 50000) {
+                request.setAttribute("customer", customerSender);
+                request.setAttribute("customers", customersRecipient);
+                request.setAttribute("messageError", "** So tien khong du de thuc hien giao dich");
+            } else {
+                long amount_transfer = Long.parseLong(request.getParameter("transferAmount"));
+                long totalTransfer = amount_transfer * (fees + 100) / 100;
+                if (balance_Sender - 50000 >= totalTransfer && amount_transfer > 0) {
+                    customerSender.setBalance(balance_Sender - totalTransfer);
+                    customerDAO.update(customerSender);
+                    customerRecipient.setBalance(customerRecipient.getBalance() + amount_transfer);
+                    boolean isCanTransfer = customerDAO.update(customerRecipient);
+                    request.setAttribute("message", "** Giao dich chuyen khoan thanh cong !");
+                    Transfer transfer = new Transfer( idSender, name_Serder, idRecipient, name_Recipient, amount_transfer, fees);
+                    transferDAO.save(transfer);
+                } else {
+                    if (amount_transfer <= 0) {
+                        request.setAttribute("messageError", "** So tien giao dich phai lon hon 0");
+                    }
+                    if (totalTransfer > balance_Sender - 50000) {
+                        request.setAttribute("messageError", "** So tien gaio dich vuot qua su du tai khoan");
+                    }
+                    request.setAttribute("customer", customerSender);
+                    request.setAttribute("customers", customersRecipient);
+                }
+            }
+        }
 //        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/transfer.jsp");
 //        try {
 //            dispatcher.forward(request, response);
@@ -486,7 +470,23 @@ public class CustomerServlet extends HttpServlet {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-        showTransfer(request,response);
+       showTransfer(request,response);
     }
+
+//    private void transfer(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+//         int idSender = Integer.parseInt(request.getParameter("id")) ;
+//         int idRecipient = Integer.parseInt(request.getParameter("idRecipient")) ;
+//         long amount = Long.parseLong(request.getParameter("transferAmount")) ;
+//         customerDAO.transfersTrancition(idSender,idRecipient,amount);
+////        RequestDispatcher dispatcher = request.getRequestDispatcher("customer/transfer.jsp");
+////        try {
+////            dispatcher.forward(request, response);
+////        } catch (ServletException e) {
+////            e.printStackTrace();
+////        } catch (IOException e) {
+////            e.printStackTrace();
+////        }
+//        showTransfer(request,response);
+//    }
 
 }

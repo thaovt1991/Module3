@@ -134,36 +134,36 @@ public class CustomerDAO implements ICustomerDAO {
         return rowUpdated;
     }
 
-    @Override
-    public void transfersTrancition(int id_sender, int id_recipient, long amount) throws SQLException {
-        String query = "{CALL sp_transfers(?,?,?)}";
-        Connection connection = null;
-
-        try {
-            connection = getConnection();
-            connection.setAutoCommit(false);
-
-            CallableStatement callableStatement = connection.prepareCall(query);
-
-            callableStatement.setInt(1, id_sender);
-
-            callableStatement.setInt(2, id_recipient);
-
-            callableStatement.setLong(3, amount);
-
-            System.out.println(callableStatement);
-
-            callableStatement.executeUpdate();
-
-            connection.commit();
-        } catch (SQLException e) {
-            connection.rollback();
-            printSQLException(e);
-        } finally {
-            connection.setAutoCommit(true);
-            connection.close();
-        }
-    }
+//    @Override
+//    public void transfersTrancition(int id_sender, int id_recipient, long amount) throws SQLException {
+//        String query = "{CALL sp_transfers(?,?,?)}";
+//        Connection connection = null;
+//
+//        try {
+//            connection = getConnection();
+//            connection.setAutoCommit(false);
+//
+//            CallableStatement callableStatement = connection.prepareCall(query);
+//
+//            callableStatement.setInt(1, id_sender);
+//
+//            callableStatement.setInt(2, id_recipient);
+//
+//            callableStatement.setLong(3, amount);
+//
+//            System.out.println(callableStatement);
+//
+//            callableStatement.executeUpdate();
+//
+//            connection.commit();
+//        } catch (SQLException e) {
+//            connection.rollback();
+//            printSQLException(e);
+//        } finally {
+//            connection.setAutoCommit(true);
+//            connection.close();
+//        }
+//    }
 
 
     private void printSQLException(SQLException ex) {

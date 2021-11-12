@@ -16,5 +16,5 @@ public interface ICustomerDAO {
 
     public boolean update(Customer customer) throws SQLException;
 
-    void transfersTrancition(int id_sender , int id_recipient , long amount) throws SQLException;
+//    void transfersTrancition(int id_sender , int id_recipient , long amount) throws SQLException;
 }
