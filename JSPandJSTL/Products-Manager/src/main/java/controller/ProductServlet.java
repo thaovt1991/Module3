@@ -22,7 +22,7 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        loginAccount(request, response);
+        loginAccount(request, response);
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
